@@ -15,3 +15,4 @@ Este projeto utiliza os [IMDb Datasets](https://datasets.imdbws.com/) para inves
 - Python
 - Pandas
 - Matplotlib
+- Seaborn
