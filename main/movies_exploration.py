@@ -47,3 +47,32 @@ plt.show()
 
 # Exibir estatísticas descritivas e correlação
 budget_gross_stats, correlation
+
+# Calcular medidas estatísticas para orçamento e bilheteira
+def calculate_statistics(column):
+    column_cleaned = column.dropna()  # Remover valores nulos
+    mean = column_cleaned.mean()  # Média
+    median = column_cleaned.median()  # Mediana
+    mode = column_cleaned.mode().iloc[0] if not column_cleaned.mode().empty else None  # Moda
+    std_dev = column_cleaned.std()  # Desvio padrão
+    amplitude = column_cleaned.max() - column_cleaned.min()  # Amplitude
+    return {
+        "Média": mean,
+        "Mediana": median,
+        "Moda": mode,
+        "Desvio Padrão": std_dev,
+        "Amplitude": amplitude,
+    }
+
+# Calcular para orçamento e bilheteira
+budget_stats = calculate_statistics(movies_df['budget'])
+gross_stats = calculate_statistics(movies_df['gross'])
+
+budget_stats, gross_stats
+
+# Exibir os resultados
+print("Estatísticas para Orçamento:")
+print(budget_stats)
+
+print("\nEstatísticas para Bilheteira:")
+print(gross_stats)
